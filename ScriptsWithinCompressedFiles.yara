@@ -78,6 +78,7 @@ rule ScriptsWithinCompressedFiles
 		// $_archive_magicnumber_string_cpio1 = "070701"  // SVR4 cpio
 		// $_archive_magicnumber_string_cpio2 = "070702"  // "crc" cpio
 		// $_archive_magicnumber_string_cpio3 = "070707"  // consider just using "07070"
+		$_archive_magicnumber_hex_cpio = {30 37 30 37 30}
 
 		// $_archive_extention_shar = ".shar"  // no other identifier
 
