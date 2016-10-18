@@ -11,6 +11,8 @@ rule ScriptsWithinCompressedFiles
 		////winzip additional
 		// $_archive_extention_ar= ".tar"
 		$_archive_magicnumber_hex_tar1 = {75 73 74 61 72}
+		$_archive_magicnumber_hex_tar1 = {66 69 6C 65 73 2F}  // "files/" this may need a second look
+	
 		// $_archive_magicnumber_string_tar1 = "ustar"
 
 		// $_archive_extention_ar= ".rar"
@@ -24,14 +26,14 @@ rule ScriptsWithinCompressedFiles
 		$_archive_magicnumber_hex_iso = {43 44 30 30 31}
 
 		// $_archive_extention_gz = ".gz"
-		$_archive_magicnumber_hex_gz1 = {1F 8B 08}
+		$_archive_magicnumber_hex_gz1 = {1F 8B 08}  // file table appears non ascii
 
 		// $_archive_extention_cab= ".cab"
 		// $_archive_magicnumber_string_cab = "MSCF"
 		$_archive_magicnumber_hex_cab = {4D 53 43 46}
 
 		// $_archive_extention_compress= ".z"
-		$_archive_magicnumber_hex_compress = {1F 9D}
+		$_archive_magicnumber_hex_compress = {1F 9D}  // Doesnt appear to have a plain text file table
 
 		// $_archive_extention_xz= ".xz"
 		$_archive_magicnumber_hex_xz = {FD 37 7A 58 5A 00}
@@ -48,14 +50,13 @@ rule ScriptsWithinCompressedFiles
 		$_archive_magicnumber_hex_arj1 = {60 EA}
 		$_archive_magicnumber_hex_arj2 = {EA 60}
 
-
 		////7zip additional
 		// http://www.7-zip.org/history.txt
 		//https://sevenzip.osdn.jp/chm/general/formats.htm
 
 		// $_archive_extention_7z = ".7z"
 		// $_archive_magicnumber_string_7z = "7z¼¯'" 
-		$_archive_magicnumber_hex_7z = {37 7A BC AF 27 1C}
+		$_archive_magicnumber_hex_7z = {37 7A BC AF 27 1C}  // file table appears non ascii
 
 		// $_archive_extention_ar= ".ar" // alt: .a,.ar,.lib
 		// $_archive_magicnumber_string_ar1 = "<ar>" // System V Release 1 ar archive
@@ -93,9 +94,20 @@ rule ScriptsWithinCompressedFiles
 		// $_archive_magicnumber_string_bz = "BZ"
 		$_archive_magicnumber_hex_lz = {42 5a}
 
-		// $_archive_extention_zoo = ".lz"
+		// $_archive_extention_lz = ".lz"
 		// $_archive_magicnumber_string_lz = "LZIP"
-		$_archive_magicnumber_hex_lz = {4c 5a 49 50}
+		$_archive_magicnumber_hex_lz = {4C 5A 49 50}  // file table appears non ascii
+		
+		// $_archive_extention_lzo = "tar.lzo"
+		// $_archive_magicnumber_string_lzo = "LZO"
+		$_archive_magicnumber_hex_lzo = {89 4C 5A 4F}
+		
+		// $_archive_extention_lzo = "tar.xz"
+		$_archive_magicnumber_hex_xz = {FD 37 7A 58 5A}
+		
+		// $_archive_extention_lzo = ".lzma"
+		$_archive_magicnumber_hex_lzma = {5D 00 00}
+		
 
 		//Scripting Langueges
 		$_scripting_extention = ".vbs"
